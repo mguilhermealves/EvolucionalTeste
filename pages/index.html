@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="meuApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="/js/angular-local-storage.min.js"></script>
+    <title>Teste Evolucional</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-controller="AlunosController">
+    <div class="row">
+        <div class="container">
+            <div class="col-sm-12 mt-5 ml-5" style="padding: 5%;">
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <label>Procurar</label>
+                        <input type="text"
+                          class="form-control" aria-describedby="helpId" placeholder="Digite aqui..." ng-model="filterAlunos">
+                        <small id="helpId" class="form-text text-muted">Digite o R.A do aluno</small>
+                    </div>
+                </div>
+                <table class="table table-striped table-inverse table-responsive" ng-show="listar">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th></th>
+                            <th>Id Aluno</th>
+                            <th>Id Classe</th>
+                            <th>Id Serie</th>
+                            <th>Nome Aluno</th>
+                            <th>R.A</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="aluno in Alunos | filter:filterAlunos">
+                                <td scope="row">
+                                    <button type="button" class="btn btn-primary" ng-click="editarAluno(aluno.id)">Editar</button>
+                                    <button type="button" class="btn btn-success" ng-click="salvarAluno(aluno.id)" ng-show="mostrarOpcaoEditar">Salvar</button>
+                                </td>
+                                <td>{{ aluno.id }}</td>
+                                <td>{{ aluno.classId }}</td>
+                                <td>{{ aluno.degreedId }}</td>
+                                <td>{{ aluno.name }}</td>
+                                <td>{{ aluno.ra }}</td>
+                            </tr>
+                        </tbody>
+                </table>
+            </div>
+            <div class="col-sm-12" ng-show="mostrarOpcaoEditar" style="background-color: aliceblue; padding: 5%;">
+                <h1 class="display-4">Edição Id n° {{ idAluno }}</h1>
+                <form ng-submit="salvarAluno()">
+                    <div class="form-group">
+                      <label>Classe</label>
+                      <input type="text" class="form-control" aria-describedby="helpId" placeholder="Digite a Classe do aluno" ng-model="aluno.classe">
+                      <small id="helpId" class="form-text text-muted">Digite a Classe do aluno</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Serie</label>
+                        <input type="text" class="form-control" aria-describedby="helpId" placeholder="Digite a Serie do aluno" ng-model="aluno.serie">
+                        <small id="helpId" class="form-text text-muted">Digite a Serie do aluno</small>
+                      </div>
+                      <div class="form-group">
+                        <label>Nome</label>
+                        <input type="text" class="form-control" aria-describedby="helpId" placeholder="Digite a Classe do aluno" ng-model="aluno.name">
+                        <small id="helpId" class="form-text text-muted">Digite o Nome do aluno</small>
+                      </div>
+                    <input type="submit" value="Add New">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/js/controllers/classes.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
