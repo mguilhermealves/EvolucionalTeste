@@ -8,48 +8,49 @@ angular.module('meuApp', ["LocalStorageModule"])
             var listaAlunos = localStorage.getItem('alunos');
             $scope.listar = true;
 
-            $scope.Alunos = [
-                {
-                    id: 1,
-                    ra: 12346,
-                    name:"Nome do aluno 1",
-                    degreedId: 1,
-                    classId: 1
-                },
-                {
-                    id: 2,
-                    ra: 456798,
-                    name:"Nome do aluno 2",
-                    degreedId: 2,
-                    classId: 1
-                },
-                {
-                    id: 3,
-                    ra: 752156,
-                    name:"Nome do aluno 3",
-                    degreedId: 3,
-                    classId: 2
-                },
-                {
-                    id: 4,
-                    ra: 852348,
-                    name:"Nome do aluno 4",
-                    degreedId: 4,
-                    classId: 2
-                },
-                {
-                    id: 5,
-                    ra: 454643,
-                    name:"Nome do aluno 5",
-                    degreedId: 6,
-                    classId: 2
-                }
-            ];
-
             if (listaAlunos === null) {
-                localStorage.setItem('alunos', JSON.stringify($scope.Alunos));
+
+                $scope.Alunos = [
+                    {
+                        id: 1,
+                        ra: 12346,
+                        name:"Nome do aluno 1",
+                        degreedId: 1,
+                        classId: 1
+                    },
+                    {
+                        id: 2,
+                        ra: 456798,
+                        name:"Nome do aluno 2",
+                        degreedId: 2,
+                        classId: 1
+                    },
+                    {
+                        id: 3,
+                        ra: 752156,
+                        name:"Nome do aluno 3",
+                        degreedId: 3,
+                        classId: 2
+                    },
+                    {
+                        id: 4,
+                        ra: 852348,
+                        name:"Nome do aluno 4",
+                        degreedId: 4,
+                        classId: 2
+                    },
+                    {
+                        id: 5,
+                        ra: 454643,
+                        name:"Nome do aluno 5",
+                        degreedId: 6,
+                        classId: 2
+                    }
+                ];
+
+                listarAlunos = localStorage.setItem('alunos', JSON.stringify($scope.Alunos));
             } else {
-                listaAlunos;
+                $scope.Alunos = JSON.parse(localStorage.getItem('alunos'));
             }
         }
 

@@ -39,12 +39,11 @@
                             <tr ng-repeat="aluno in Alunos | filter:filterAlunos">
                                 <td scope="row">
                                     <button type="button" class="btn btn-primary" ng-click="editarAluno(aluno.id)">Editar</button>
-                                    <button type="button" class="btn btn-success" ng-click="salvarAluno(aluno.id)" ng-show="mostrarOpcaoEditar">Salvar</button>
                                 </td>
                                 <td>{{ aluno.id }}</td>
-                                <td>{{ aluno.classId }}</td>
-                                <td>{{ aluno.degreedId }}</td>
                                 <td>{{ aluno.name }}</td>
+                                <td>{{ aluno.degreedId }}</td>
+                                <td>{{ aluno.classId }}</td>
                                 <td>{{ aluno.ra }}</td>
                             </tr>
                         </tbody>
@@ -52,8 +51,8 @@
             </div>
             <div class="col-sm-12" ng-show="mostrarOpcaoEditar" style="background-color: aliceblue; padding: 5%;">
                 <h1 class="display-4">Edição Id n° {{ idAluno }}</h1>
-                <form ng-submit="salvarAluno()">
-                    <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="div-group">
                       <label>Classe</label>
                       <input type="text" class="form-control" aria-describedby="helpId" placeholder="Digite a Classe do aluno" ng-model="aluno.classe">
                       <small id="helpId" class="form-text text-muted">Digite a Classe do aluno</small>
@@ -68,7 +67,7 @@
                         <input type="text" class="form-control" aria-describedby="helpId" placeholder="Digite a Classe do aluno" ng-model="aluno.name">
                         <small id="helpId" class="form-text text-muted">Digite o Nome do aluno</small>
                       </div>
-                    <input type="submit" value="Add New">
+                    <button type="button" class="btn btn-success" ng-click="salvarAluno(idAluno)">Salvar</button>
                 </form>
             </div>
         </div>
